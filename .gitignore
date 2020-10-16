@@ -1,0 +1,6 @@
+.idea/
+venv/
+data/
+results/
+tmp_file*
+__pycache__/
