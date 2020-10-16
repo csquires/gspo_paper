@@ -1,4 +1,5 @@
-This is the code base to reproduce the paper
+This is the code base to reproduce the experimental results of the paper [Ordering-Based Causal Structure Learning in the Presence of Latent Variables
+](https://arxiv.org/abs/1910.09014). For an installable version of the Greedy Sparsest Poset (GSPo) algorithm, please refer to the [causaldag](https://github.com/uhlerlab/causaldag) package.
 
 To start, run `setup.sh`
 
