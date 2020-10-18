@@ -48,14 +48,12 @@ if __name__ == '__main__':
         )
 
         if OVERWRITE or not os.path.exists(results_filename):
-            print(results_filename)
             samples = get_mag_samples(ngraphs, nnodes, nlatent, exp_nbrs, graph_num, nsamples)
             start = time.time()
             suffstat = gauss_ci_suffstat(samples)
             ci_tester = MemoizedCI_Tester(gauss_ci_test, suffstat, alpha=alpha)
             est_mag = gspo(set(range(nnodes)), ci_tester, initial_imap=initial, depth=depth, nruns=nruns, max_iters=max_iters, make_minimal=lmc_update)
             time_used = time.time() - start
-            print(time_used)
 
             os.makedirs(os.path.dirname(results_filename), exist_ok=True)
             np.save(results_filename, est_mag.to_amat())

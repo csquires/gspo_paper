@@ -1,9 +1,7 @@
-import numpy as np
 import causaldag as cd
-from causaldag.inference.structural import perm2dag, min_degree_alg_amat, threshold_ug, gsp
+from causaldag.structure_learning import perm2dag, min_degree_alg_amat, threshold_ug, gsp
 import random
 import itertools as itr
-from old.old_poset import Poset
 from utils.util import poset2mag_stable, mag2poset
 
 
@@ -226,7 +224,7 @@ def gspo(
         amat = ug.to_amat()
         perms = [min_degree_alg_amat(amat) for _ in range(nruns)]
         dags = [gsp(nodes, ci_tester, nruns=1, initial_permutations=[perm]) for perm in perms]
-        starting_imaps = [cd.AncestralGraph(dag.nodes, directed=dag.arcs) for dag, _ in dags]
+        starting_imaps = [cd.AncestralGraph(dag.nodes, directed=dag.arcs) for dag in dags]
 
     # print('starting:', starting_imaps)
 
